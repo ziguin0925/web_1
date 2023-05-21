@@ -1,0 +1,25 @@
+https://overit.tistory.com/entry/PythonDjangoVSCode-Django-Tutorials-12-%EA%B8%B0%EB%B3%B8-%ED%85%9C%ED%94%8C%EB%A6%BF%EC%9D%84-%ED%99%95%EC%9E%A5%ED%95%98%EB%8A%94-%EC%97%AC%EB%9F%AC-%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A7%8C%EB%93%A4%EA%B8%B0
+
+python manage.py runserver- 실행
+ctrl+c 끄기
+
+{
+venv 가상환경 끄기 
+deactivate 입력
+
+켜기
+python -m venv 가상환경이름
+가상환경이름\Scripts\activate
+
+Ctrl + Shift + `  를 눌러서 가상 환경 터미널을 열 수도 있다.
+}
+
+
+색상 또는 글꼴적용 안될때
+1. 브라우저에서 f12눌러서 관리자 모드 킨 다음 새로고침(상단 바 웹 경로 표시되어 있는곳 근처) 우클릭하여 캐시 지우기.
+2. 인터넷 방문 기록 지우기=쿠키 및 기타 사이트 데이터 삭제
+3.href="~~?after" 추가 해보기
+
+
+css
+https://www.codingfactory.net/10588

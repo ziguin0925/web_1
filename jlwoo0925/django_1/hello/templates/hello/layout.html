@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>자동차 판매 보조 사이트</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=divice-width,initial-scale=1 "?>
+        <link rel ="stylesheet"  href="/static/hello/site.css?after"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <style>
+            a{
+                text-decoration:none;
+                color: inherit;
+            }
+            a:hover{
+                color:darkgrey;
+                text-decoration: none;
+            }
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+        </style>
+    </head>
+
+    <body>
+        
+        <div class="top">
+            <div class = "top-content">
+                <a href="{% url 'home' %}" class="toplogo">Car Program</a>
+                
+            </div>
+            <div class="top-login">
+                <a href="{% url 'login' %}" class="navbar-a">로그인</a>
+                <a href="{% url 'joinmember' %}" class="navbar-a">회원가입</a>
+                
+            </div>
+        </div>
+    
+        <div class="body-content">
+
+        </div>   
+        <div class="navbar1"> 
+            <div class="texteffect">
+                <a href="{% url 'about' %}" class="slideUp">About</a>
+            </div>
+            <a href="{% url 'home' %}" class="navbar.brand">Car Program</a>
+        
+            <div class="texteffect">
+                <a href="{% url 'contact' %}" class="slideUp">Contact</a>
+            </div>
+                
+        </div>  
+               
+        {% block content %}
+
+        {% endblock %}
+    </body>
+    
+    <footer class="footer">
+        <p>
+            
+        </p>
+    </footer>
+</html>
