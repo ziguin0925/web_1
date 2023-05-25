@@ -1,0 +1,62 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+자동차 판매 설문
+{% endblock %}
+{% block content%}
+
+{% if user.is_authenticated %}
+<div class="center" style="grid-row-gap: 25px;">
+    <div class="slidepricecontainer">
+        <input type="range" min="1000" max="10000" value="5000" class="sliderprice" id="myRange">
+        <p>가격: <span id="value"></span>만원</p>
+    </div>
+    <div class="col-12">
+        <label for="country" class="form-label">차량 종류</label>
+        <select class="form-select" id="vehicle" required="" style="width: 500px;">
+          <option value="">Choose...</option>
+          <option>소형</option>
+          <option>중형</option>
+          <option>대형</option>
+        </select>
+      </div>
+    <div class="col-12">
+        <label for="country" class="form-label">사용 빈도</label>
+        <select class="form-select" id="use" required="" style="width: 500px;">
+          <option value="">Choose...</option>
+          <option>1주일에 1~2번</option>
+          <option>1주일에 2~4번</option>
+          <option>매일</option>
+        </select>
+      </div>
+    <div class="col-12">
+        <label for="country" class="form-label">거주 지역</label>
+        <select class="form-select" id="location" required="" style="width: 500px;">
+          <option value="">Choose...</option>
+          <option>서울</option>
+          <option>인천</option>
+          <option>대구</option>
+          <option>부산</option>
+          <option>찍고 턴</option>
+        </select>
+      </div>
+</div>
+    
+<script>
+    var sliderprice = document.getElementById("myRange");
+    var output = document.getElementById("value");
+    output.innerHTML = sliderprice.value;
+    
+    sliderprice.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
+{% else %}
+<div class="center">
+  <div class=" container-600">
+    <h1>로그인이 필요합니다.</h1>
+    <hr>
+    <button><a href="{% url 'login' %}" class="navbar-a">로그인</a></button>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

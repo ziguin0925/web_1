@@ -1,0 +1,47 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+자동차 판매 커뮤니티
+{% endblock %}
+{% block content%}
+<div class="center" >
+    <article class="blog-post" style="display: grid;;max-width: 1200px; justify-items: center;">
+        <h3 class="blog-post-title mb-1">게시판 주의</h3>
+        <hr>
+
+        <p class="blog-post-meta"><a href ="{% url 'contact' %}">2023 권한자 : 정룡우</a></a></p>
+
+        <p>차량에 대한 다양한 의견을 말 할 수 있는 페이지 입니다. 차량에 대해 다양한 의견을 펼쳐 주세요.</p>
+        <blockquote>
+          <p>차량에 대한 평가는 가능하나 사람에 대한 평가는 금지입니다. <br> 예시: <strong>이종헌 이라는 사람 정말 예의가 없고 짜증납니다. 세상에서 없어졌으면;;</strong> <br> 이러한 비방용 글을 싸질렀을 경우 회원 박탈한다.</p>
+        </blockquote>
+        <p>곧 있으면 기말 고사 입니다. 여러분들 공부 열심히 하세요.</p>
+        <h2>게시판 테이블</h2>
+        <hr>
+        <p>글쓰기를 할 때에는 로그인이 필요 없습니다.</p>
+        <table class="table" style=" max-width: 1000px;">
+          <thead>
+            <tr>
+              <th>순번</th>
+              <th>게시글 제목</th>
+              <th>날짜</th>
+            </tr>
+          </thead>
+          {% for list in post_list %}
+          <tbody>
+            <tr>
+              <td><a href="{{list.pk}}/">{{list.id}}</a></td>
+              <td><a href="{{list.pk}}/">{{list.postname}}</a></td>
+              <td>{{list.create_date}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <button><a href="{% url 'postwrite' %}">글쓰기</a></button>
+
+        <p>글을 등록하십시오.</p>
+      </article>
+    </div>
+</div>
+
+
+{% endblock %}
