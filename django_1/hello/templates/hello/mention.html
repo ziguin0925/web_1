@@ -4,41 +4,85 @@
 {% endblock %}
 {% block content%}
 
-{% if user.is_authenticated %}
-<div class="center" style="grid-row-gap: 25px;">
-    <div class="slidepricecontainer">
-        <input type="range" min="1000" max="10000" value="5000" class="sliderprice" id="myRange">
-        <p>가격: <span id="value"></span>만원</p>
-    </div>
-    <div class="col-12">
-        <label for="country" class="form-label">차량 종류</label>
-        <select class="form-select" id="vehicle" required="" style="width: 500px;">
-          <option value="">Choose...</option>
-          <option>소형</option>
-          <option>중형</option>
-          <option>대형</option>
-        </select>
-      </div>
-    <div class="col-12">
-        <label for="country" class="form-label">사용 빈도</label>
-        <select class="form-select" id="use" required="" style="width: 500px;">
-          <option value="">Choose...</option>
-          <option>1주일에 1~2번</option>
-          <option>1주일에 2~4번</option>
-          <option>매일</option>
-        </select>
-      </div>
-    <div class="col-12">
-        <label for="country" class="form-label">거주 지역</label>
-        <select class="form-select" id="location" required="" style="width: 500px;">
-          <option value="">Choose...</option>
-          <option>서울</option>
-          <option>인천</option>
-          <option>대구</option>
-          <option>부산</option>
-          <option>찍고 턴</option>
-        </select>
-      </div>
+<div class="center" >
+  <h1 class="text-center" style="margin-bottom: 50px;">설문 항목</h1>
+  <div style="width: 800px; display: grid; justify-items: center; grid-row-gap: 50px;">
+      <form method="post" action="{% url 'mention' %}">
+          {% csrf_token %}
+          <fieldset>
+            <div style=" margin-bottom: 50px;display: grid; justify-items:center ; width: 500px;;background-color: #d3d2d2; border-radius: 20px;">
+              <div><h2>가격</h2></div><br>
+              <div style="text-align: left; line-height: 20px;">
+                  <p>
+                  <input type="radio" name="price" value="1">3000만원 미만<br>
+                  <input type="radio" name="price" value="2">3000~5000만원<br>
+                  <input type="radio" name="price" value="3">5000~7000만원<br>
+                  <input type="radio" name="price" value="4">7000~9000만원<br>
+                  <input type="radio" name="price" value="5">1억이상<br>
+                </p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 50px;display: grid; justify-items:center ;width: 500px;;background-color: #d3d2d2; border-radius: 20px;">
+              <div><h2>사용 빈도</h2></div><br>
+              <div style="text-align: left;">
+                  <p>
+                  <input type="radio" name="frequency" value="1">주 1~2회<br>
+                  <input type="radio" name="frequency" value="2">주 3~5회<br>
+                  <input type="radio" name="frequency" value="3">주 6~7회<br>
+                </p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 50px;display: grid; justify-items:center ;width: 500px;;background-color: #d3d2d2; border-radius: 20px;">
+              <div><h2>일주일 거리</h2></div><br>
+              <div style="text-align: left;">
+                  <p>
+                  <input type="radio" name="distance" value="1">100km미만<br>
+                  <input type="radio" name="distance" value="2">100km~1000km<br>
+                  <input type="radio" name="distance" value="3">1000~3000km<br>
+                  <input type="radio" name="distance" value="4">3000km 이상<br>
+                </p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 50px;display: grid; justify-items:center ;width: 500px;;background-color: #d3d2d2; border-radius: 20px;">
+              <div><h2>거주 위치</h2></div><br>
+              <div style="text-align: left;">
+                  <p>
+                  <input type="radio" name="location" value="1">서울<br>
+                  <input type="radio" name="location" value="2">인천<br>
+                  <input type="radio" name="location" value="3">대전<br>
+                  <input type="radio" name="location" value="4">울산<br>
+                  <input type="radio" name="location" value="5">광주<br>
+                  <input type="radio" name="location" value="6">부산<br>
+                  <input type="radio" name="location" value="7">이외<br>
+
+                </p>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 50px;display: grid; justify-items:center ;width: 500px;;background-color: #d3d2d2; border-radius: 20px;">
+              <div><h2>중요성</h2></div><br>
+              <div style="text-align: left;">
+                  <p>
+                  <input type="radio" name="importance" value="시승감">시승감<br>
+                  <input type="radio" name="importance" value="자율주행">자율주행<br>
+                  <input type="radio" name="importance" value="배터리 용량">배터리 용량<br>
+                  <input type="radio" name="importance" value="디자인">디자인<br>
+                  <input type="radio" name="importance" value="유지 보수 비용">유지 보수 비용<br>
+                </p>
+              </div>
+            </div>
+      
+            
+              <input type="hidden" value="{{user.id}}" name="User_id">
+              <button class="w-100 btn btn-lg btn-primary" type="submit">제 출</button>
+            </fieldset>
+      </form>
+  </div>
+
+
 </div>
     
 <script>
@@ -50,13 +94,5 @@
         output.innerHTML = this.value;
     }
 </script>
-{% else %}
-<div class="center">
-  <div class=" container-600">
-    <h1>로그인이 필요합니다.</h1>
-    <hr>
-    <button><a href="{% url 'login' %}" class="navbar-a">로그인</a></button>
-  </div>
-</div>
-{% endif %}
+
 {% endblock %}

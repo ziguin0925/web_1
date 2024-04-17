@@ -102,9 +102,34 @@
         </div>
     </div>
 </div>
+{%if good%}
+<div class="center">
+    <div class="effectcontent">
+        <h1>차량 추천</h1>
+        <div class="slideUp">
+            <div class="slider">
+                <input type="radio" name="slide" id="slide1" checked="">
+                <input type="radio" name="slide" id="slide2">
+                
+                <ul id="imgholder" class="imgs">
+                    <li style="text-align: right;"><img style="width: 640px; height: 380px;" src="{{good.img1}}"><a href="{{good.link1}}">차량 정보 확인</a></li>
+                    <li style="text-align: right;"><img style="width: 640px; height: 380px;" src="{{good.img2}}"><a href="{{good.link2}}">차량 정보 확인</a></li>
+                    
+                </ul>
+                    <div class="bullets">
+                        <label for="slide1">&nbsp;</label>
+                        <label for="slide2">&nbsp;</label>
+                        
+                    </div> 
+                </div>
+            </div>
+        </div>
+</div>
+{% else %}
 
 <div class="center">
 <div class="effectcontent">
+    <h1>차량 추천</h1>
     <div class="slideUp">
         <div class="slider">
             <input type="radio" name="slide" id="slide1" checked="">
@@ -128,6 +153,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 <div class="center">
     <div  style="border-radius: 20px; border: 3px solid #bcbcbc; width: 800px;" >

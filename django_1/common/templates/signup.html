@@ -61,7 +61,7 @@
               <label for="username" class="form-label">비밀 번호</label>
               <div class="input-group has-validation">
                 <span class="input-group-text"></span>
-                <input type="password" class="form-control" name="password1" id="password1" placeholder="Username" required=""
+                <input type="password" class="form-control" name="password1" id="password1" placeholder="password" required=""
                 value="{{ form.password1.value|default_if_none:'' }}">
               <div class="invalid-feedback">
                   
@@ -72,7 +72,7 @@
               <label for="username" class="form-label">비밀 번호 확인</label>
               <div class="input-group has-validation">
                 <span class="input-group-text"></span>
-                <input type="password" class="form-control" name="password2" id="password2" placeholder="Username" required=""
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="password" required=""
                 value="{{ form.password2.value|default_if_none:'' }}">
               <div class="invalid-feedback">
                   
@@ -93,7 +93,7 @@
 
             <div class="col-12">
               <label for="email" class="form-label">전화 번호<span class="text-body-secondary">(필수적)</span></label>
-              <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="010-2706-1189"
+              <input type="number" class="form-control" name="phone_number" id="phone_number" placeholder="01030913501"
               value="{{ form.password2.value|default_if_none:'01030913051' }}">
               <div class="invalid-feedback">
                 
@@ -110,7 +110,7 @@
 
             <div class="col-12">
               <label for="address2" class="form-label">주소 <span class="text-body-secondary">(선택적)</span></label>
-              <input type="text" class="form-control" name="address2" id="address2" placeholder="상세 주소 설정">
+              <input type="text" class="form-control" name="address2" id="address2" placeholder="조혁준 아파트 123-45467">
             </div>
 
             

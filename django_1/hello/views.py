@@ -5,16 +5,32 @@ from django.utils import timezone
 
 from django.shortcuts import render, redirect
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import *
 
-from .models import Post
+from .models import Post, Mention, Recom
+
+from django.contrib.auth import authenticate
+from common.models import User
+from .car import *
+from django.contrib.auth.decorators import login_required
 
 
 
+#클래스형 view(Class Based View)
 
+def home(request): # 함수형 view(FBV)
+            if (request.user.is_authenticated):
+                user=request.user
+                user_id=User.objects.get(username=user)
+                try:
+                    user_price=Mention.objects.get(User_id=user_id.id)
+                except:
+                    return render(request, "hello/home.html")
+                good=Recom.objects.get(num=user_price.price)
+                return render(request, "hello/home.html",{'good':good})
 
-def home(request):
-    return render(request, "hello/home.html")
+            else:
+                return render(request, "hello/home.html")
 
 def about(request):
     return render(request, "hello/about.html")
@@ -28,8 +44,7 @@ def infra(request):
 def repaircar(request):
     return render(request,'hello/repaircar.html')
 
-def mention(request):
-    return render(request,'hello/mention.html')
+
 
 def buycar(request):
     return render(request,'hello/buycar.html')
@@ -64,3 +79,43 @@ def post_read(request,pk):
     post = Post.objects.get(pk=pk)
     # posting.html 페이지를 열 때, 찾아낸 게시글(post)을 post라는 이름으로 가져옴
     return render(request, 'hello/post_read.html', {'post':post})
+
+@login_required
+def mention(request):
+    if request.method == 'POST':
+        u_id=int(request.POST["User_id"])
+        try:
+            key=Mention.objects.get(User_id=u_id)
+
+            if (key):
+                cancel=Mention.objects.get(User_id=u_id)
+                cancel.delete()
+                car_recom=Mention.objects.create(
+                price=request.POST["price"],
+                frequency=request.POST["frequency"],
+                distance=request.POST["distance"],
+                location=request.POST["location"],
+                importance=request.POST["importance"],
+                User_id=User.objects.get(pk=u_id),
+            )
+            
+        
+        except:
+            car_recom=Mention.objects.create(
+            price=request.POST["price"],
+            frequency=request.POST["frequency"],
+            distance=request.POST["distance"],
+            location=request.POST["location"],
+            importance=request.POST["importance"],
+            User_id=User.objects.get(pk=u_id),
+        )
+        score(request.POST["price"])
+        good=Recom.objects.get(num=request.POST["price"])
+        return redirect('/', {'good':good})
+    return render(request, 'hello/mention.html')
+
+
+
+def loged_out(request):
+    logout(request)
+    return render(request, 'hello/home.html')

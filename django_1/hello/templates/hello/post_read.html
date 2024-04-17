@@ -7,11 +7,18 @@
 
 
     <h1>게시글 개별 페이지입니다</h1>
-    <div>
-    <p>{{post.postname}}</p>
-    </div>
-    <div>    
-        <p>{{post.text}}</p>
+    <div style="display: grid; justify-items: center;width: 800px; height: 100%;">
+        <hr>
+        
+        <div style="margin-bottom: 50px; border-radius: 20px;width: 500px;">
+            <h3>제목 : {{post.postname}}</h3>
+        </div>
+        <div style="margin-bottom: 50px; border-radius: 20px; border: 2px solid black; height: 500px; width: 600px; padding: 10px; text-align: left; ">    
+            
+
+                <p>{{post.text}}</p>
+            
+        </div>
     </div>
 </div>
     

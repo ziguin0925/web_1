@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractUser, AbstractBaseUser
+    BaseUserManager, AbstractUser, AbstractBaseUser, 
 )
     
 class User(AbstractUser):

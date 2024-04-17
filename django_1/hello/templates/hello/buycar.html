@@ -15,7 +15,7 @@
 
     }
     </style>
-
+{% if user.is_authenticated %}
 <div class="center">
     
     <div class="container marketing">
@@ -64,19 +64,19 @@
                 <div class="car_seller" style="background-position: 50% 50%; background-image: url(https://th.bing.com/th/id/OIP.UkTMsO2aHmHBGoZcoS3QyQAAAA?pid=ImgDet&rs=1)"></div>
                 <h2 class="fw-normal">국내</h2>
                 <p>국내 차량 안내소 이니까 많이 들려</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                <p><a class="btn btn-secondary" href="https://www.kia.com/kr/buy/build-your-car/vehicle-lineup?cate=1">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="car_seller" style="background-size: 180% 150%; background-position: 50% 50%; background-image: url(https://th.bing.com/th/id/OIP.iooUp5GOZPM_PqzSACkAjAHaE7?pid=ImgDet&rs=1)"></div>
                 <h2 class="fw-normal">국외</h2>
                 <p>hi, come on to pay for me</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                <p><a class="btn btn-secondary" href="https://www.lamborghini.com/en-en/models/revuelto">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="car_seller" style=" background-repeat: no-repeat; background-position: 50% 50%; background-size: 90% 60%; background-image: url(https://blog.kakaocdn.net/dn/JhEc4/btqCMnTfoer/4x14bx76UZUmVOQeiDI9b1/img.jpg)"></div>
                 <h2 class="fw-normal">잡 것</h2>
                 <p>I always wanted to buy this brand equipment</p>
-                <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                <p><a class="btn btn-secondary" href="https://www.lexus.co.kr/build-and-price/">View details »</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
         
@@ -91,5 +91,14 @@
     
 </div>
 </div>
+{% else %}
+<div class="center">
+  <div class=" container-600">
+    <h1>로그인이 필요합니다.</h1>
+    <hr>
+    <button><a href="{% url 'login' %}" class="navbar-a">로그인</a></button>
+  </div>
+</div>
+{% endif %}
 
 {% endblock %}
